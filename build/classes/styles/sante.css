@@ -1,0 +1,174 @@
+/* ============================================================
+   Sante Diagnostics LIMS – Pink Theme
+   ============================================================ */
+
+.root {
+    -fx-background-color: #fdf2f5;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    -fx-background-color: #c2185b;
+    -fx-min-width: 200px;
+    -fx-pref-width: 200px;
+}
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 20 16 4 16;
+    -fx-wrap-text: true;
+}
+.sidebar-subtitle {
+    -fx-text-fill: #f8bbd0;
+    -fx-font-size: 11px;
+    -fx-padding: 0 16 20 16;
+}
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 16 10 16;
+    -fx-pref-width: 200px;
+    -fx-cursor: hand;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+}
+.nav-btn:hover    { -fx-background-color: #ad1457; }
+.nav-btn-active   { -fx-background-color: #880e4f; -fx-font-weight: bold; }
+.logout-btn {
+    -fx-background-color: #880e4f;
+    -fx-text-fill: white;
+    -fx-padding: 10 16;
+    -fx-pref-width: 200px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 0;
+}
+.logout-btn:hover { -fx-background-color: #6a0f3b; }
+
+/* ── Top bar ── */
+.top-bar {
+    -fx-background-color: white;
+    -fx-padding: 12 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 2);
+}
+.page-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #880e4f;
+}
+
+/* ── Content ── */
+.content-area {
+    -fx-background-color: #fdf2f5;
+    -fx-padding: 20 24;
+}
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 6, 0, 0, 2);
+}
+.card-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #880e4f;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+    -fx-background-color: #e91e8c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.btn-primary:hover   { -fx-background-color: #c2185b; }
+.btn-secondary {
+    -fx-background-color: #f8bbd0;
+    -fx-text-fill: #880e4f;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover { -fx-background-color: #f48fb1; }
+.btn-danger {
+    -fx-background-color: #e53935;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 6 14;
+    -fx-cursor: hand;
+}
+.btn-success {
+    -fx-background-color: #43a047;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 6 14;
+    -fx-cursor: hand;
+}
+
+/* ── Form fields ── */
+.text-field, .password-field, .text-area {
+    -fx-background-color: white;
+    -fx-border-color: #f48fb1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 7 10;
+}
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #e91e8c;
+}
+.combo-box {
+    -fx-border-color: #f48fb1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+.form-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+}
+
+/* ── Tables ── */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #f8bbd0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.table-view .column-header { -fx-background-color: #e91e8c; }
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell:selected { -fx-background-color: #f8bbd0; }
+.table-view .table-row-cell:hover    { -fx-background-color: #fce4ec; }
+
+/* ── Labels ── */
+.error-label   { -fx-text-fill: #e53935; -fx-font-size: 12px; }
+.success-label { -fx-text-fill: #43a047; -fx-font-size: 12px; }
+
+/* ── Auth screens ── */
+.auth-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 16, 0, 0, 4);
+    -fx-max-width: 420;
+}
+.auth-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c2185b;
+}
+.auth-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #888;
+}

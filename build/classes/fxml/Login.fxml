@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane"
+    stylesheets="@/styles/sante.css"
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.sante.lims.controller.LoginController">
+  <children>
+    <StackPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+               AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+               style="-fx-background-color: linear-gradient(to bottom right, #fce4ec, #f8bbd0);">
+      <VBox alignment="CENTER" spacing="16" styleClass="auth-panel">
+        <Label text="🩺 Sante Diagnostics" styleClass="auth-title"/>
+        <Label text="Laboratory Information Management System" styleClass="auth-subtitle"/>
+
+        <VBox spacing="6">
+          <Label text="Email" styleClass="form-label"/>
+          <TextField fx:id="emailField" promptText="name@example.com" prefWidth="340"/>
+        </VBox>
+        <VBox spacing="6">
+          <Label text="Password" styleClass="form-label"/>
+          <PasswordField fx:id="passwordField" promptText="Enter your password" prefWidth="340"/>
+        </VBox>
+
+        <Button text="Login" onAction="#onLogin" styleClass="btn-primary"
+                prefWidth="340" style="-fx-font-size:14px; -fx-padding: 10 0;"/>
+
+        <HBox alignment="CENTER" spacing="10">
+          <Button text="Register"     onAction="#onRegister"    styleClass="btn-secondary"/>
+          <Button text="Verify Email" onAction="#onVerifyEmail" styleClass="btn-secondary"/>
+          <Button text="Exit"         onAction="#onExit"        styleClass="btn-secondary"/>
+        </HBox>
+
+        <Label fx:id="messageLabel" styleClass="error-label" wrapText="true" maxWidth="340"/>
+      </VBox>
+    </StackPane>
+  </children>
+</AnchorPane>

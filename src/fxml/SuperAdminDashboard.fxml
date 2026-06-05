@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane"
+    stylesheets="@/styles/sante.css"
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.sante.lims.controller.SuperAdminDashboardController">
+  <children>
+    <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+      <!-- Sidebar -->
+      <VBox styleClass="sidebar" spacing="4">
+        <Label text="Sante Diagnostics" styleClass="sidebar-title"/>
+        <Label text="Super Admin"        styleClass="sidebar-subtitle"/>
+        <Button fx:id="navTests" text="🧪  Test Catalogue" onAction="#onNavTests" styleClass="nav-btn"/>
+        <Button fx:id="navQueue" text="📋  Request Queue"  onAction="#onNavQueue" styleClass="nav-btn"/>
+        <Button fx:id="navUsers" text="👤  Manage Users"   onAction="#onNavUsers" styleClass="nav-btn"/>
+        <Button fx:id="navAudit" text="📜  Audit Trail"    onAction="#onNavAudit" styleClass="nav-btn"/>
+        <VBox VBox.vgrow="ALWAYS"/>
+        <Button text="⏻  Logout" onAction="#onLogout" styleClass="logout-btn"/>
+      </VBox>
+
+      <!-- Main -->
+      <VBox HBox.hgrow="ALWAYS">
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
+          <Label fx:id="pageTitleLabel" text="Test Catalogue" styleClass="page-title"/>
+          <HBox HBox.hgrow="ALWAYS"/>
+          <Label fx:id="welcomeLabel" style="-fx-text-fill:#888; -fx-font-size:13px;"/>
+        </HBox>
+
+        <StackPane VBox.vgrow="ALWAYS" styleClass="content-area">
+
+          <!-- TEST CATALOGUE -->
+          <VBox fx:id="paneTests" spacing="16" visible="true" managed="true">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+              <Label text="Test Catalogue" styleClass="card-title"/>
+              <HBox HBox.hgrow="ALWAYS"/>
+              <Button text="+ Add Test" onAction="#onAddTest" styleClass="btn-primary"/>
+            </HBox>
+            <TableView fx:id="testTable" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colTestName"     text="Name"      prefWidth="180"/>
+                <TableColumn fx:id="colTestCategory" text="Category"  prefWidth="120"/>
+                <TableColumn fx:id="colTestPrice"    text="Price (₦)" prefWidth="100"/>
+                <TableColumn fx:id="colTestTat"      text="TAT (hrs)" prefWidth="90"/>
+                <TableColumn fx:id="colTestFormat"   text="Format"    prefWidth="100"/>
+                <TableColumn fx:id="colTestAction"   text="Action"    prefWidth="100"/>
+              </columns>
+            </TableView>
+            <VBox fx:id="addTestForm" styleClass="card" spacing="10"
+                  visible="false" managed="false">
+              <Label text="New Test" styleClass="card-title"/>
+              <HBox spacing="12" alignment="CENTER_LEFT">
+                <VBox spacing="4" prefWidth="180">
+                  <Label text="Name"      styleClass="form-label"/>
+                  <TextField fx:id="testNameField" promptText="e.g. Blood Count"/>
+                </VBox>
+                <VBox spacing="4" prefWidth="150">
+                  <Label text="Category"  styleClass="form-label"/>
+                  <TextField fx:id="testCategoryField" promptText="e.g. Blood"/>
+                </VBox>
+                <VBox spacing="4" prefWidth="120">
+                  <Label text="Price (₦)" styleClass="form-label"/>
+                  <TextField fx:id="testPriceField" promptText="e.g. 5000"/>
+                </VBox>
+                <VBox spacing="4" prefWidth="100">
+                  <Label text="TAT Hours" styleClass="form-label"/>
+                  <TextField fx:id="testTatField" promptText="e.g. 24"/>
+                </VBox>
+                <VBox spacing="4" prefWidth="130">
+                  <Label text="Result Format" styleClass="form-label"/>
+                  <ComboBox fx:id="testFormatCombo" prefWidth="130"/>
+                </VBox>
+              </HBox>
+              <VBox spacing="4">
+                <Label text="Description (optional)" styleClass="form-label"/>
+                <TextArea fx:id="testDescField" prefHeight="60" wrapText="true"/>
+              </VBox>
+              <HBox spacing="10">
+                <Button text="Save Test" onAction="#onSaveTest"      styleClass="btn-primary"/>
+                <Button text="Cancel"    onAction="#onCancelAddTest" styleClass="btn-secondary"/>
+              </HBox>
+              <Label fx:id="testFormMsg" styleClass="error-label" wrapText="true"/>
+            </VBox>
+          </VBox>
+
+          <!-- REQUEST QUEUE -->
+          <VBox fx:id="paneQueue" spacing="16" visible="false" managed="false">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+              <Label text="Test Request Queue" styleClass="card-title"/>
+              <HBox HBox.hgrow="ALWAYS"/>
+              <Button text="↻ Refresh" onAction="#onRefreshQueue" styleClass="btn-secondary"/>
+            </HBox>
+            <TableView fx:id="queueTable" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colQCustomer" text="Customer"  prefWidth="150"/>
+                <TableColumn fx:id="colQTest"     text="Test"      prefWidth="160"/>
+                <TableColumn fx:id="colQPayment"  text="Payment"   prefWidth="90"/>
+                <TableColumn fx:id="colQStatus"   text="Status"    prefWidth="130"/>
+                <TableColumn fx:id="colQDate"     text="Requested" prefWidth="140"/>
+                <TableColumn fx:id="colQAction"   text="Action"    prefWidth="110"/>
+              </columns>
+            </TableView>
+            <Label fx:id="queueMsg" styleClass="error-label"/>
+          </VBox>
+
+          <!-- MANAGE USERS -->
+          <VBox fx:id="paneUsers" spacing="16" visible="false" managed="false">
+            <Label text="Create Staff / Customer Account" styleClass="card-title"/>
+            <VBox styleClass="card" spacing="12">
+              <HBox spacing="12">
+                <VBox spacing="4" prefWidth="200">
+                  <Label text="Full Name" styleClass="form-label"/>
+                  <TextField fx:id="newUserName" promptText="Full name"/>
+                </VBox>
+                <VBox spacing="4" prefWidth="220">
+                  <Label text="Email" styleClass="form-label"/>
+                  <TextField fx:id="newUserEmail" promptText="email@example.com"/>
+                </VBox>
+                <VBox spacing="4" prefWidth="160">
+                  <Label text="Role" styleClass="form-label"/>
+                  <ComboBox fx:id="newUserRole" prefWidth="160"/>
+                </VBox>
+              </HBox>
+              <Button text="Create Account" onAction="#onCreateUser" styleClass="btn-primary"/>
+              <Label fx:id="userFormMsg" styleClass="error-label" wrapText="true"/>
+            </VBox>
+          </VBox>
+
+          <!-- AUDIT TRAIL -->
+          <VBox fx:id="paneAudit" spacing="16" visible="false" managed="false">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+              <Label text="Audit Trail (Read-Only)" styleClass="card-title"/>
+              <HBox HBox.hgrow="ALWAYS"/>
+              <Button text="↻ Refresh" onAction="#onRefreshAudit" styleClass="btn-secondary"/>
+            </HBox>
+            <TableView fx:id="auditTable" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colAuditTime"   text="Time"   prefWidth="150"/>
+                <TableColumn fx:id="colAuditUser"   text="User"   prefWidth="150"/>
+                <TableColumn fx:id="colAuditAction" text="Action" prefWidth="130"/>
+                <TableColumn fx:id="colAuditEntity" text="Entity" prefWidth="120"/>
+                <TableColumn fx:id="colAuditDetail" text="Detail" prefWidth="280"/>
+              </columns>
+            </TableView>
+          </VBox>
+
+        </StackPane>
+      </VBox>
+    </HBox>
+  </children>
+</AnchorPane>

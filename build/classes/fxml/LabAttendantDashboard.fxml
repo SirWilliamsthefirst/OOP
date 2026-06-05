@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane"
+    stylesheets="@/styles/sante.css"
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.sante.lims.controller.LabAttendantDashboardController">
+  <children>
+    <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+      <!-- Sidebar -->
+      <VBox styleClass="sidebar" spacing="4">
+        <Label text="Sante Diagnostics" styleClass="sidebar-title"/>
+        <Label text="Lab Attendant"      styleClass="sidebar-subtitle"/>
+        <Button fx:id="navQueue"   text="📋  Request Queue"  onAction="#onNavQueue"   styleClass="nav-btn"/>
+        <Button fx:id="navResults" text="🔬  Upload Results" onAction="#onNavResults" styleClass="nav-btn"/>
+        <VBox VBox.vgrow="ALWAYS"/>
+        <Button text="⏻  Logout" onAction="#onLogout" styleClass="logout-btn"/>
+      </VBox>
+
+      <!-- Main -->
+      <VBox HBox.hgrow="ALWAYS">
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
+          <Label fx:id="pageTitleLabel" text="Request Queue" styleClass="page-title"/>
+          <HBox HBox.hgrow="ALWAYS"/>
+          <Label fx:id="welcomeLabel" style="-fx-text-fill:#888; -fx-font-size:13px;"/>
+        </HBox>
+
+        <StackPane VBox.vgrow="ALWAYS" styleClass="content-area">
+
+          <!-- REQUEST QUEUE -->
+          <VBox fx:id="paneQueue" spacing="16" visible="true" managed="true">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+              <Label text="All Test Requests" styleClass="card-title"/>
+              <HBox HBox.hgrow="ALWAYS"/>
+              <Button text="↻ Refresh" onAction="#onRefreshQueue" styleClass="btn-secondary"/>
+            </HBox>
+            <TableView fx:id="queueTable" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colCustomer" text="Customer"  prefWidth="150"/>
+                <TableColumn fx:id="colTest"     text="Test"      prefWidth="160"/>
+                <TableColumn fx:id="colPayment"  text="Payment"   prefWidth="90"/>
+                <TableColumn fx:id="colStatus"   text="Status"    prefWidth="130"/>
+                <TableColumn fx:id="colDate"     text="Date"      prefWidth="140"/>
+                <TableColumn fx:id="colPay"      text="Mark Paid" prefWidth="100"/>
+                <TableColumn fx:id="colSample"   text="Sample"    prefWidth="120"/>
+              </columns>
+            </TableView>
+            <Label fx:id="queueMsg" styleClass="error-label"/>
+          </VBox>
+
+          <!-- UPLOAD RESULTS -->
+          <VBox fx:id="paneResults" spacing="16" visible="false" managed="false">
+            <Label text="Upload and Validate Results" styleClass="card-title"/>
+            <VBox styleClass="card" spacing="10">
+              <Label text="Select Request" styleClass="form-label"/>
+              <ComboBox fx:id="requestCombo" prefWidth="420" promptText="Choose a test request…"/>
+              <Button text="Load" onAction="#onLoadRequest" styleClass="btn-secondary"/>
+            </VBox>
+            <VBox fx:id="uploadForm" styleClass="card" spacing="12"
+                  visible="false" managed="false">
+              <Label fx:id="uploadRequestInfo" style="-fx-font-weight:bold; -fx-text-fill:#555;"/>
+              <HBox spacing="12" alignment="CENTER_LEFT">
+                <VBox spacing="4">
+                  <Label text="Result Format" styleClass="form-label"/>
+                  <ComboBox fx:id="resultFormatCombo" prefWidth="150"/>
+                </VBox>
+              </HBox>
+              <VBox fx:id="numericBox" spacing="4" visible="false" managed="false">
+                <Label text="Numeric Value" styleClass="form-label"/>
+                <TextField fx:id="numericField" promptText="e.g. 4.5" prefWidth="200"/>
+              </VBox>
+              <VBox fx:id="textBox" spacing="4" visible="false" managed="false">
+                <Label text="Result Text" styleClass="form-label"/>
+                <TextArea fx:id="textResultField" prefHeight="80" wrapText="true"/>
+              </VBox>
+              <VBox fx:id="fileBox" spacing="4" visible="false" managed="false">
+                <Label text="File (PDF or Image)" styleClass="form-label"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                  <TextField fx:id="filePathField" promptText="No file chosen"
+                             prefWidth="300" editable="false"/>
+                  <Button text="Browse…" onAction="#onBrowseFile" styleClass="btn-secondary"/>
+                </HBox>
+              </VBox>
+              <HBox spacing="10">
+                <Button text="Upload Result"         onAction="#onUploadResult"   styleClass="btn-primary"/>
+                <Button text="Validate and Notify"   onAction="#onValidateResult" styleClass="btn-success"/>
+              </HBox>
+              <Label fx:id="uploadMsg" styleClass="error-label" wrapText="true"/>
+            </VBox>
+          </VBox>
+
+        </StackPane>
+      </VBox>
+    </HBox>
+  </children>
+</AnchorPane>
