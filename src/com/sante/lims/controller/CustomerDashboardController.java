@@ -41,17 +41,17 @@ public class CustomerDashboardController {
     @FXML private Label welcomeLabel, pageTitleLabel;
     @FXML private AnchorPane rootPane;
 
-    // ── Browse ───────────────────────────────────────────────────
+    // Browse
     @FXML private TableView<TestType> testsTable;
     @FXML private TableColumn<TestType, String> colBName, colBCategory, colBPrice, colBTat, colBFormat, colBOrder;
     @FXML private VBox bankDetailsBox;
     @FXML private Label bankNameLabel, bankAccNameLabel, bankAccNumLabel;
 
-    // ── My Orders ────────────────────────────────────────────────
+    //My Orders
     @FXML private TableView<TestRequest> ordersTable;
     @FXML private TableColumn<TestRequest, String> colOTest, colOStatus, colOPayment, colODate, colOCountdown;
 
-    // ── My Results ───────────────────────────────────────────────
+    //My Results
     @FXML private TableView<TestRequest> resultsTable;
     @FXML private TableColumn<TestRequest, String> colRTest, colRFormat, colRDate, colRView, colRDown;
     @FXML private VBox resultViewBox;
@@ -80,7 +80,7 @@ public class CustomerDashboardController {
         startCountdownTimer();
     }
 
-    // ── Navigation ───────────────────────────────────────────────
+    // Navigation
 
     @FXML private void onNavBrowse(ActionEvent e)   { showPane("browse"); loadTests(); }
     @FXML private void onNavMyOrders(ActionEvent e) { showPane("orders"); loadOrders(); }
@@ -98,7 +98,7 @@ public class CustomerDashboardController {
         }
     }
 
-    // ── Browse & Order ───────────────────────────────────────────
+    // Browse & Order
 
     private void setupBrowseTable() {
         colBName.setCellValueFactory(c     -> new SimpleStringProperty(c.getValue().getName()));
@@ -145,7 +145,7 @@ public class CustomerDashboardController {
         bankDetailsBox.setVisible(false); bankDetailsBox.setManaged(false);
     }
 
-    // ── My Orders with countdown ─────────────────────────────────
+    // My Orders with countdown 
 
     private void setupOrdersTable() {
         colOTest.setCellValueFactory(c     -> new SimpleStringProperty(c.getValue().getTestTypeName()));
@@ -182,7 +182,7 @@ public class CustomerDashboardController {
         countdownTimeline.play();
     }
 
-    // ── My Results ───────────────────────────────────────────────
+    // My Results
 
     private void setupResultsTable() {
         colRTest.setCellValueFactory(c   -> new SimpleStringProperty(c.getValue().getTestTypeName()));
@@ -262,7 +262,7 @@ public class CustomerDashboardController {
         if (opt.isEmpty()) { showAlert("No Result", "No result found."); return; }
         Result r = opt.get();
         if (r.getFilePath() == null) {
-            // For text/numeric, write to file
+            //For text/numeric, write to file
             DirectoryChooser dc = new DirectoryChooser();
             dc.setTitle("Choose Save Location");
             File dir = dc.showDialog(navBrowse.getScene().getWindow());
@@ -274,7 +274,7 @@ public class CustomerDashboardController {
             try { Files.writeString(out.toPath(), content); showAlert("Saved", "Saved to: " + out.getAbsolutePath()); }
             catch (IOException ex) { showAlert("Error", "Could not save file."); }
         } else {
-            // Copy file to chosen directory
+            //to copy file to chosen directory
             DirectoryChooser dc = new DirectoryChooser();
             dc.setTitle("Choose Save Location");
             File dir = dc.showDialog(navBrowse.getScene().getWindow());
@@ -287,7 +287,7 @@ public class CustomerDashboardController {
         }
     }
 
-    // ── Helpers ──────────────────────────────────────────────────
+    //Helpers
 
     private void showAlert(String title, String msg) {
         Alert a = new Alert(Alert.AlertType.INFORMATION);

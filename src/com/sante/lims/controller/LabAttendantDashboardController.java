@@ -37,13 +37,13 @@ public class LabAttendantDashboardController {
     @FXML private Label welcomeLabel, pageTitleLabel;
     @FXML private AnchorPane rootPane;
 
-    // ── Queue ────────────────────────────────────────────────────
+    //Queue
     @FXML private TableView<TestRequest> queueTable;
     @FXML private TableColumn<TestRequest, String> colCustomer, colTest, colPayment,
             colStatus, colDate, colPay, colSample;
     @FXML private Label queueMsg;
 
-    // ── Upload Results ───────────────────────────────────────────
+    //Upload Results 
     @FXML private ComboBox<String> requestCombo, resultFormatCombo;
     @FXML private VBox uploadForm, numericBox, textBox, fileBox;
     @FXML private TextField numericField, filePathField;
@@ -73,7 +73,7 @@ public class LabAttendantDashboardController {
         loadQueue();
     }
 
-    // ── Navigation ───────────────────────────────────────────────
+    // Navigation
 
     @FXML private void onNavQueue(ActionEvent e)   { showPane("queue"); }
     @FXML private void onNavResults(ActionEvent e) { showPane("results"); loadRequestCombo(); }
@@ -87,7 +87,7 @@ public class LabAttendantDashboardController {
         }
     }
 
-    // ── Request Queue ────────────────────────────────────────────
+    //Request Queue
 
     private void setupQueueTable() {
         colCustomer.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCustomerName()));
@@ -119,7 +119,7 @@ public class LabAttendantDashboardController {
             }
         });
 
-        // Sample status button
+        //Sample status button
         colSample.setCellFactory(col -> new TableCell<>() {
             private final Button btn = new Button("Next Stage");
             { btn.getStyleClass().add("btn-secondary"); btn.setStyle("-fx-font-size:11px;"); }
@@ -168,7 +168,7 @@ public class LabAttendantDashboardController {
         queueMsg.setText("");
     }
 
-    // ── Upload Results ───────────────────────────────────────────
+    // Upload Results
 
     private void loadRequestCombo() {
         allRequests = requestDAO.findAll();

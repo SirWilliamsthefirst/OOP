@@ -30,16 +30,16 @@ import com.sante.lims.util.DBConnection;
 
 public class SuperAdminDashboardController {
 
-    // ── Sidebar nav buttons ──────────────────────────────────────
+    // Sidebar nav buttons
     @FXML private Button navTests, navQueue, navUsers, navAudit;
 
-    // ── Panes ────────────────────────────────────────────────────
+    // Panes 
     @FXML private VBox paneTests, paneQueue, paneUsers, paneAudit;
 
-    // ── Top bar ──────────────────────────────────────────────────
+    // Top bar
     @FXML private Label welcomeLabel, pageTitleLabel;
 
-    // ── Test catalogue ───────────────────────────────────────────
+    //Test catalogue
     @FXML private TableView<TestType> testTable;
     @FXML private TableColumn<TestType, String> colTestName, colTestCategory,
             colTestPrice, colTestTat, colTestFormat, colTestAction;
@@ -49,18 +49,18 @@ public class SuperAdminDashboardController {
     @FXML private TextArea testDescField;
     @FXML private Label testFormMsg;
 
-    // ── Request queue ────────────────────────────────────────────
+    // Request queue 
     @FXML private TableView<TestRequest> queueTable;
     @FXML private TableColumn<TestRequest, String> colQCustomer, colQTest, colQPayment,
             colQStatus, colQDate, colQAction;
     @FXML private Label queueMsg;
 
-    // ── Manage users ─────────────────────────────────────────────
+    //Manage users
     @FXML private TextField newUserName, newUserEmail;
     @FXML private ComboBox<String> newUserRole;
     @FXML private Label userFormMsg;
 
-    // ── Audit trail ──────────────────────────────────────────────
+    //Audit trail
     @FXML private TableView<String[]> auditTable;
     @FXML private TableColumn<String[], String> colAuditTime, colAuditUser,
             colAuditAction, colAuditEntity, colAuditDetail;
@@ -88,7 +88,7 @@ public class SuperAdminDashboardController {
         loadTests();
     }
 
-    // ── Navigation ───────────────────────────────────────────────
+    //Navigation
 
     @FXML private void onNavTests(ActionEvent e)  { showPane("tests"); }
     @FXML private void onNavQueue(ActionEvent e)  { showPane("queue"); loadQueue(); }
@@ -118,7 +118,7 @@ public class SuperAdminDashboardController {
         }
     }
 
-    // ── Test Catalogue ───────────────────────────────────────────
+    // Test Catalogue
 
     private void setupTestTable() {
         colTestName.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getName()));
@@ -191,7 +191,7 @@ public class SuperAdminDashboardController {
         testTatField.clear(); testFormatCombo.setValue(null); testDescField.clear();
     }
 
-    // ── Request Queue ────────────────────────────────────────────
+    // Request Queue
 
     private void setupQueueTable() {
         colQCustomer.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCustomerName()));
@@ -232,7 +232,7 @@ public class SuperAdminDashboardController {
         queueMsg.setText("");
     }
 
-    // ── Manage Users ─────────────────────────────────────────────
+    // Manage Users
 
     @FXML private void onCreateUser(ActionEvent e) {
         userFormMsg.setText("");
@@ -255,7 +255,7 @@ public class SuperAdminDashboardController {
         }
     }
 
-    // ── Audit Trail ──────────────────────────────────────────────
+    // Audit Trail
 
     private void setupAuditTable() {
         colAuditTime.setCellValueFactory(c   -> new SimpleStringProperty(c.getValue()[0]));
@@ -290,7 +290,7 @@ public class SuperAdminDashboardController {
         auditTable.setItems(rows);
     }
 
-    // ── Logout ───────────────────────────────────────────────────
+    // Logout
 
     @FXML private void onLogout(ActionEvent e) throws IOException {
         AuditLogger.log("LOGOUT", "Super admin logged out.");
