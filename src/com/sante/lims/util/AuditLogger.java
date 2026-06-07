@@ -15,12 +15,6 @@ public class AuditLogger {
 
     private AuditLogger() {}
 
-    /**
-     * @param action     Short action code, e.g. "LOGIN", "CREATE_TEST", "MARK_PAID"
-     * @param entityType Table name of the affected record, e.g. "test_requests"
-     * @param entityId   PK of the affected record (may be null)
-     * @param detail     Human-readable description
-     */
     public static void log(String action, String entityType, UUID entityId, String detail) {
         UUID userId = null;
         if (SessionManager.getInstance().isLoggedIn()) {
@@ -43,12 +37,12 @@ public class AuditLogger {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            // Audit failures should not crash the app – just print
+            // Audit failures should not crash the app but just print
             System.err.println("[AuditLogger] Failed to write audit entry: " + e.getMessage());
         }
     }
 
-    /** Convenience overload without an entity. */
+    // Convenience overload without an entity.
     public static void log(String action, String detail) {
         log(action, null, null, detail);
     }

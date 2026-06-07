@@ -22,7 +22,7 @@ public class TestType {
 
     public TestType() {}
 
-    // ── Getters ─────────────────────────────────────────────────
+    //Getters
     public UUID         getId()           { return id; }
     public String       getName()         { return name; }
     public String       getCategory()     { return category; }
@@ -35,7 +35,7 @@ public class TestType {
     public LocalDateTime getCreatedAt()   { return createdAt; }
     public LocalDateTime getUpdatedAt()   { return updatedAt; }
 
-    // ── Setters ─────────────────────────────────────────────────
+    //Setters
     public void setId(UUID id)                        { this.id = id; }
     public void setName(String name)                  { this.name = name; }
     public void setCategory(String category)          { this.category = category; }

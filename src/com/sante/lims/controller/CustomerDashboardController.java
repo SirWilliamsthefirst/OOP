@@ -50,6 +50,8 @@ public class CustomerDashboardController {
     //My Orders
     @FXML private TableView<TestRequest> ordersTable;
     @FXML private TableColumn<TestRequest, String> colOTest, colOStatus, colOPayment, colODate, colOCountdown;
+    @FXML private Label bankAmountLabel;
+@FXML private Label bankTestLabel;
 
     //My Results
     @FXML private TableView<TestRequest> resultsTable;
@@ -124,26 +126,31 @@ public class CustomerDashboardController {
     }
 
     private void placeOrder(TestType tt) {
-        User user = SessionManager.getInstance().getCurrentUser();
-        requestDAO.create(user.getId(), tt.getId()).ifPresentOrElse(req -> {
-            AuditLogger.log("PLACE_ORDER", "test_requests", req.getId(), "Ordered: " + tt.getName());
-            // Show bank details
-            bankDAO.getActive().ifPresentOrElse(bd -> {
-                bankNameLabel.setText("Bank: " + bd.bankName());
-                bankAccNameLabel.setText("Account Name: " + bd.accountName());
-                bankAccNumLabel.setText("Account No: " + bd.accountNumber());
-            }, () -> {
-                bankNameLabel.setText("Bank: First Bank Nigeria");
-                bankAccNameLabel.setText("Account Name: Sante Diagnostics Ltd");
-                bankAccNumLabel.setText("Account No: 3012345678");
-            });
-            bankDetailsBox.setVisible(true); bankDetailsBox.setManaged(true);
-        }, () -> showAlert("Order Failed", "Could not place your order. Please try again."));
-    }
+    User user = SessionManager.getInstance().getCurrentUser();
+    requestDAO.create(user.getId(), tt.getId()).ifPresentOrElse(req -> {
+        AuditLogger.log("PLACE_ORDER", "test_requests", req.getId(), "Ordered: " + tt.getName());
+        bankDAO.getActive().ifPresentOrElse(bd -> {
+            bankNameLabel.setText("Bank: " + bd.bankName());
+            bankAccNameLabel.setText("Account Name: " + bd.accountName());
+            bankAccNumLabel.setText("Account No: " + bd.accountNumber());
+        }, () -> {
+            bankNameLabel.setText("Bank: First Bank Nigeria");
+            bankAccNameLabel.setText("Account Name: Sante Diagnostics Ltd");
+            bankAccNumLabel.setText("Account No: 3012345678");
+        });
+        bankAmountLabel.setText("Amount to Pay: ₦" + tt.getPrice().toPlainString());
+        bankTestLabel.setText("Test Ordered: " + tt.getName());
+        bankDetailsBox.setVisible(true);
+        bankDetailsBox.setManaged(true);
+    }, () -> showAlert("Order Failed", "Could not place your order. Please try again."));
+}
 
-    @FXML private void onBankDetailsDone(ActionEvent e) {
-        bankDetailsBox.setVisible(false); bankDetailsBox.setManaged(false);
-    }
+    @FXML 
+        private void onBankDetailsDone(ActionEvent e) {
+            bankDetailsBox.setVisible(false); 
+            bankDetailsBox.setManaged(false);
+        }
+
 
     // My Orders with countdown 
 

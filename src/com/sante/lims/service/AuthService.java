@@ -73,12 +73,7 @@ public class AuthService {
         User user = userDAO.createCustomer(fullName, normalizedEmail, hash, verifyToken)
                 .orElseThrow(() -> new AuthenticationException("Unable to complete registration. Try again."));
 
-        try {
-            EmailService.sendVerificationEmail(user, verifyToken);
-        } catch (MessagingException e) {
-            System.err.println("[AuthService] Verification email send failed: " + e.getMessage());
-            // Continue registration even if email delivery is not configured.
-        }
+        System.out.println("[AuthService] Verify token for " + user.getEmail() + ": " + verifyToken);
 
         return user;
     }

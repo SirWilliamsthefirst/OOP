@@ -20,7 +20,7 @@
     <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
-      <!-- Sidebar -->
+      
       <VBox styleClass="sidebar" spacing="4">
         <Label text="Sante Diagnostics" styleClass="sidebar-title"/>
         <Label text="Super Admin"        styleClass="sidebar-subtitle"/>
@@ -32,7 +32,7 @@
         <Button text="⏻  Logout" onAction="#onLogout" styleClass="logout-btn"/>
       </VBox>
 
-      <!-- Main -->
+      
       <VBox HBox.hgrow="ALWAYS">
         <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
           <Label fx:id="pageTitleLabel" text="Test Catalogue" styleClass="page-title"/>
@@ -42,7 +42,7 @@
 
         <StackPane VBox.vgrow="ALWAYS" styleClass="content-area">
 
-          <!-- TEST CATALOGUE -->
+          
           <VBox fx:id="paneTests" spacing="16" visible="true" managed="true">
             <HBox spacing="12" alignment="CENTER_LEFT">
               <Label text="Test Catalogue" styleClass="card-title"/>
@@ -96,7 +96,7 @@
             </VBox>
           </VBox>
 
-          <!-- REQUEST QUEUE -->
+          
           <VBox fx:id="paneQueue" spacing="16" visible="false" managed="false">
             <HBox spacing="12" alignment="CENTER_LEFT">
               <Label text="Test Request Queue" styleClass="card-title"/>
@@ -116,7 +116,7 @@
             <Label fx:id="queueMsg" styleClass="error-label"/>
           </VBox>
 
-          <!-- MANAGE USERS -->
+         
           <VBox fx:id="paneUsers" spacing="16" visible="false" managed="false">
             <Label text="Create Staff / Customer Account" styleClass="card-title"/>
             <VBox styleClass="card" spacing="12">
@@ -135,11 +135,11 @@
                 </VBox>
               </HBox>
               <Button text="Create Account" onAction="#onCreateUser" styleClass="btn-primary"/>
-              <Label fx:id="userFormMsg" styleClass="error-label" wrapText="true"/>
+              <Label fx:id="userFormMsg" wrapText="true" minHeight="20" style="-fx-font-size:13px;"/>
             </VBox>
           </VBox>
 
-          <!-- AUDIT TRAIL -->
+        
           <VBox fx:id="paneAudit" spacing="16" visible="false" managed="false">
             <HBox spacing="12" alignment="CENTER_LEFT">
               <Label text="Audit Trail (Read-Only)" styleClass="card-title"/>

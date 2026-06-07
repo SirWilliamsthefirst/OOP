@@ -24,7 +24,7 @@ public class Result {
 
     public Result() {}
 
-    // ── Getters ─────────────────────────────────────────────────
+    // Getters 
     public UUID          getId()               { return id; }
     public UUID          getRequestId()        { return requestId; }
     public ResultFormat  getResultFormat()     { return resultFormat; }
@@ -39,7 +39,7 @@ public class Result {
     public LocalDateTime getUploadedAt()       { return uploadedAt; }
     public LocalDateTime getUpdatedAt()        { return updatedAt; }
 
-    // ── Setters ─────────────────────────────────────────────────
+    // Setters
     public void setId(UUID id)                          { this.id = id; }
     public void setRequestId(UUID requestId)            { this.requestId = requestId; }
     public void setResultFormat(ResultFormat rf)        { this.resultFormat = rf; }

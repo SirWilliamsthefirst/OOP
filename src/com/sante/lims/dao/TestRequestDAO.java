@@ -101,7 +101,7 @@ public class TestRequestDAO {
         String sql = "UPDATE test_requests SET result_ready_at = ?, status = 'COMPLETED', updated_at = NOW() WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setObject(1, readyAt);
+            ps.setTimestamp(1, java.sql.Timestamp.valueOf(readyAt));
             ps.setObject(2, requestId);
             return ps.executeUpdate() == 1;
         } catch (SQLException e) { e.printStackTrace(); return false; }

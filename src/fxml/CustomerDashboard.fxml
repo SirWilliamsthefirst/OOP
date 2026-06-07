@@ -18,7 +18,7 @@
     <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
-      <!-- Sidebar -->
+     
       <VBox styleClass="sidebar" spacing="4">
         <Label text="Sante Diagnostics" styleClass="sidebar-title"/>
         <Label text="Patient Portal"     styleClass="sidebar-subtitle"/>
@@ -29,7 +29,7 @@
         <Button text="⏻  Logout" onAction="#onLogout" styleClass="logout-btn"/>
       </VBox>
 
-      <!-- Main -->
+      
       <VBox HBox.hgrow="ALWAYS">
         <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
           <Label fx:id="pageTitleLabel" text="Browse Tests" styleClass="page-title"/>
@@ -39,7 +39,7 @@
 
         <StackPane VBox.vgrow="ALWAYS" styleClass="content-area">
 
-          <!-- BROWSE TESTS -->
+         
           <VBox fx:id="paneBrowse" spacing="16" visible="true" managed="true">
             <Label text="Available Tests" styleClass="card-title"/>
             <TableView fx:id="testsTable" VBox.vgrow="ALWAYS">
@@ -60,11 +60,25 @@
               <Label fx:id="bankAccNumLabel"  style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#e91e8c;"/>
               <Label text="After payment, inform the lab attendant with your order reference."
                      style="-fx-text-fill:#888; -fx-font-size:12px;" wrapText="true"/>
+              <Label fx:id="bankTestLabel"   style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#555;"/>
+              <Label fx:id="bankAmountLabel" style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#e91e8c;"/>
               <Button text="Done" onAction="#onBankDetailsDone" styleClass="btn-secondary"/>
             </VBox>
           </VBox>
-
-          <!-- MY ORDERS -->
+          
+          <VBox fx:id="bankDetailsBox" styleClass="card" spacing="8"
+                visible="false" managed="false">
+              <Label text="Order Placed! Please make payment to:" styleClass="card-title"/>
+              <Label fx:id="bankTestLabel"    style="-fx-font-size:13px; -fx-font-weight:bold; -fx-text-fill:#555;"/>
+              <Label fx:id="bankNameLabel"    style="-fx-font-size:13px;"/>
+              <Label fx:id="bankAccNameLabel" style="-fx-font-size:13px;"/>
+              <Label fx:id="bankAccNumLabel"  style="-fx-font-size:15px; -fx-font-weight:bold; -fx-text-fill:#e91e8c;"/>
+              <Label fx:id="bankAmountLabel"  style="-fx-font-size:16px; -fx-font-weight:bold; -fx-text-fill:#e91e8c;"/>
+              <Label text="After payment, inform the lab attendant with your order reference."
+                     style="-fx-text-fill:#888; -fx-font-size:12px;" wrapText="true"/>
+              <Button text="Done" onAction="#onBankDetailsDone" styleClass="btn-secondary"/>
+          </VBox>
+         
           <VBox fx:id="paneMyOrders" spacing="16" visible="false" managed="false">
             <HBox spacing="12" alignment="CENTER_LEFT">
               <Label text="My Orders" styleClass="card-title"/>
@@ -82,7 +96,7 @@
             </TableView>
           </VBox>
 
-          <!-- MY RESULTS -->
+        
           <VBox fx:id="paneResults" spacing="16" visible="false" managed="false">
             <HBox spacing="12" alignment="CENTER_LEFT">
               <Label text="My Results" styleClass="card-title"/>

@@ -20,7 +20,7 @@
     <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
-      <!-- Sidebar -->
+     
       <VBox styleClass="sidebar" spacing="4">
         <Label text="Sante Diagnostics" styleClass="sidebar-title"/>
         <Label text="Lab Attendant"      styleClass="sidebar-subtitle"/>
@@ -30,7 +30,7 @@
         <Button text="⏻  Logout" onAction="#onLogout" styleClass="logout-btn"/>
       </VBox>
 
-      <!-- Main -->
+      
       <VBox HBox.hgrow="ALWAYS">
         <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
           <Label fx:id="pageTitleLabel" text="Request Queue" styleClass="page-title"/>
@@ -40,7 +40,7 @@
 
         <StackPane VBox.vgrow="ALWAYS" styleClass="content-area">
 
-          <!-- REQUEST QUEUE -->
+          
           <VBox fx:id="paneQueue" spacing="16" visible="true" managed="true">
             <HBox spacing="12" alignment="CENTER_LEFT">
               <Label text="All Test Requests" styleClass="card-title"/>
@@ -61,7 +61,7 @@
             <Label fx:id="queueMsg" styleClass="error-label"/>
           </VBox>
 
-          <!-- UPLOAD RESULTS -->
+         
           <VBox fx:id="paneResults" spacing="16" visible="false" managed="false">
             <Label text="Upload and Validate Results" styleClass="card-title"/>
             <VBox styleClass="card" spacing="10">

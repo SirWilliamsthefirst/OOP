@@ -21,7 +21,7 @@ public class User {
 
     public User() {}
 
-    // ── Getters ─────────────────────────────────────────────────
+    //Getters
     public UUID          getId()           { return id; }
     public String        getFullName()     { return fullName; }
     public String        getEmail()        { return email; }
@@ -34,7 +34,7 @@ public class User {
     public LocalDateTime getCreatedAt()    { return createdAt; }
     public LocalDateTime getUpdatedAt()    { return updatedAt; }
 
-    // ── Setters ─────────────────────────────────────────────────
+    //Setters
     public void setId(UUID id)                       { this.id = id; }
     public void setFullName(String fullName)         { this.fullName = fullName; }
     public void setEmail(String email)               { this.email = email; }

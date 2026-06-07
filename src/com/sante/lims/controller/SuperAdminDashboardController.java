@@ -288,6 +288,8 @@ public class SuperAdminDashboardController {
             }
         } catch (SQLException ex) { ex.printStackTrace(); }
         auditTable.setItems(rows);
+        auditTable.refresh();
+        
     }
 
     // Logout

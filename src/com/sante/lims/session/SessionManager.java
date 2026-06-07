@@ -2,10 +2,9 @@ package com.sante.lims.session;
 
 import com.sante.lims.model.User;
 
-/**
- * Simple in-memory session. Holds the currently authenticated user
- * for the lifetime of the application session.
- */
+/*Simple in-memory session. Holds the currently authenticated user
+  for the lifetime of the application session.*/
+
 public class SessionManager {
 
     private static SessionManager instance;

@@ -24,7 +24,7 @@ public class TestRequest {
 
     public TestRequest() {}
 
-    // ── Getters ─────────────────────────────────────────────────
+    //Getters
     public UUID          getId()              { return id; }
     public UUID          getCustomerId()      { return customerId; }
     public String        getCustomerName()    { return customerName; }
@@ -39,7 +39,7 @@ public class TestRequest {
     public LocalDateTime getCreatedAt()       { return createdAt; }
     public LocalDateTime getUpdatedAt()       { return updatedAt; }
 
-    // ── Setters ─────────────────────────────────────────────────
+    // Setters
     public void setId(UUID id)                           { this.id = id; }
     public void setCustomerId(UUID customerId)           { this.customerId = customerId; }
     public void setCustomerName(String n)                { this.customerName = n; }
