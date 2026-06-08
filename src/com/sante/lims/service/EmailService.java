@@ -12,7 +12,7 @@ public class EmailService {
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final int SMTP_PORT = 587;
     private static final String SMTP_USERNAME = "igwenma27@gmail.com";
-    private static final String SMTP_PASSWORD = "qjjvkivvgasohirn";
+    private static final String SMTP_PASSWORD = "";
     private static final String FROM_ADDRESS = "igwenma27@gmail.com";
     //
 
@@ -37,6 +37,18 @@ public class EmailService {
                 + "Please log in to your Sante Diagnostics account to view and download your result.\n\n"
                 + "Regards,\nSante Diagnostics Team";
         send(customer.getEmail(), subject, body);
+    }
+    
+    public static void sendTempPasswordEmail(User user, String tempPassword) throws MessagingException {
+        String subject = "Sante Diagnostics – Your Account Has Been Created";
+        String body = "Hello " + user.getFullName() + ",\n\n"
+                + "An account has been created for you on Sante Diagnostics LIMS.\n\n"
+                + "Your login details are:\n\n"
+                + "    Email:             " + user.getEmail() + "\n"
+                + "    Temporary Password: " + tempPassword + "\n\n"
+                + "You will be required to change your password on first login.\n\n"
+                + "Regards,\nSante Diagnostics Team";
+        send(user.getEmail(), subject, body);
     }
 
     private static void send(String to, String subject, String body) throws MessagingException {

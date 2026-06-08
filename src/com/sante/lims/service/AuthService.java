@@ -75,7 +75,14 @@ public class AuthService {
 
         System.out.println("[AuthService] Verify token for " + user.getEmail() + ": " + verifyToken);
 
+        try {
+            EmailService.sendVerificationEmail(user, verifyToken);
+        } catch (Exception ex) {
+            System.err.println("[AuthService] Failed to send verification email: " + ex.getMessage());
+        }
+
         return user;
+
     }
 
     public void verifyEmail(String email, String token) throws AuthenticationException {

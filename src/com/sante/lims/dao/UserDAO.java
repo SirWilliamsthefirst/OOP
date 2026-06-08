@@ -4,6 +4,7 @@ import com.sante.lims.model.User;
 import com.sante.lims.service.AuthenticationException;
 import com.sante.lims.util.DBConnection;
 import org.mindrot.jbcrypt.BCrypt;
+import com.sante.lims.service.EmailService;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -115,6 +116,13 @@ public class UserDAO {
             ps.setObject(5, createdBy);
             ps.executeUpdate();
             System.out.println("[UserDAO] Temp password for " + email + ": " + tempPassword);
+            findByEmail(email).ifPresent(user -> {
+                try {
+                    EmailService.sendTempPasswordEmail(user, tempPassword);
+                } catch (Exception ex) {
+                    System.err.println("[UserDAO] Failed to send temp password email: " + ex.getMessage());
+                }
+            });
         } catch (SQLException e) {
             throw new AuthenticationException("Failed to create account: " + e.getMessage());
         }
