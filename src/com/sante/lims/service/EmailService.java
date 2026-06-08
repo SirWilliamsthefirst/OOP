@@ -9,11 +9,11 @@ import java.util.Properties;
 public class EmailService {
 
     //Configure these with your real SMTP credentials
-    private static final String SMTP_HOST     = "smtp.gmail.com";   // e.g. smtp.gmail.com
-    private static final int    SMTP_PORT     = 587;
-    private static final String SMTP_USERNAME = "your-email@gmail.com";
-    private static final String SMTP_PASSWORD = "your-app-password"; // Gmail app password
-    private static final String FROM_ADDRESS  = "no-reply@santediagnostics.com";
+    private static final String SMTP_HOST = "smtp.gmail.com";
+    private static final int SMTP_PORT = 587;
+    private static final String SMTP_USERNAME = "igwenma27@gmail.com";
+    private static final String SMTP_PASSWORD = "qjjvkivvgasohirn";
+    private static final String FROM_ADDRESS = "igwenma27@gmail.com";
     //
 
     private EmailService() {}
