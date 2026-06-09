@@ -7,15 +7,13 @@ import jakarta.mail.internet.*;
 import java.util.Properties;
 
 public class EmailService {
-
-    //Configure these with your real SMTP credentials
+    
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final int SMTP_PORT = 587;
     private static final String SMTP_USERNAME = "igwenma27@gmail.com";
     private static final String SMTP_PASSWORD = "";
     private static final String FROM_ADDRESS = "igwenma27@gmail.com";
-    //
-
+    
     private EmailService() {}
 
     public static void sendVerificationEmail(User user, String verificationToken) throws MessagingException {

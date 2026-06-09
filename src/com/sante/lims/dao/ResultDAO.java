@@ -26,7 +26,7 @@ public class ResultDAO {
     public Optional<Result> upload(UUID requestId, String resultFormat,
                                     BigDecimal numericValue, String textValue,
                                     String filePath, UUID uploadedBy) {
-        // Upsert: if result already exists for request, update it
+        
         String sql = """
             INSERT INTO results
               (request_id, result_format, numeric_value, text_value, file_path,

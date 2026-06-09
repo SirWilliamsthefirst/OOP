@@ -8,10 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Central scene-switching utility.
- * Usage: SceneNavigator.switchTo(stage, "/fxml/Dashboard.fxml", "Title");
- */
+
 public class SceneNavigator {
 
     private SceneNavigator() {}
@@ -46,9 +43,7 @@ public class SceneNavigator {
         }
     }
 
-    /**
-     * Loads an FXML and returns its controller — useful when you need to pass data.
-     */
+ 
     public static <T> T loadController(String fxmlPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneNavigator.class.getResource(fxmlPath));
         loader.load();

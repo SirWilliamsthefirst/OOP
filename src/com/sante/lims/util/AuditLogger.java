@@ -7,10 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
 
-/**
- * Writes immutable entries to the audit_log table.
- * Call AuditLogger.log(...) after every significant user action.
- */
 public class AuditLogger {
 
     private AuditLogger() {}

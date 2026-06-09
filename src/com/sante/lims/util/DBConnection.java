@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Singleton JDBC connection utility.
- * Update DB_URL, USER, and PASSWORD to match your local PostgreSQL setup.
- */
+
 public class DBConnection {
 
     private static final String DB_URL  = "jdbc:postgresql://localhost:5433"

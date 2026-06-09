@@ -10,14 +10,14 @@ public class TestRequest {
 
     private UUID          id;
     private UUID          customerId;
-    private String        customerName;   // joined field – convenience
+    private String        customerName;   
     private UUID          testTypeId;
-    private String        testTypeName;   // joined field – convenience
+    private String        testTypeName;
     private PaymentStatus paymentStatus;
     private UUID          paymentMarkedBy;
     private LocalDateTime paymentMarkedAt;
     private Status        status;
-    private LocalDateTime resultReadyAt;  // drives customer countdown timer
+    private LocalDateTime resultReadyAt;
     private String        notes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

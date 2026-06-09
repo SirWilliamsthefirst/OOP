@@ -12,7 +12,7 @@ public class TestType {
     private String        name;
     private String        category;
     private BigDecimal    price;
-    private int           tatHours;        // Standard Turnaround Time in hours
+    private int           tatHours;
     private ResultFormat  resultFormat;
     private String        description;
     private boolean       active;

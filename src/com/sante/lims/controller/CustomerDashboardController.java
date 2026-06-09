@@ -152,7 +152,7 @@ public class CustomerDashboardController {
         }
 
 
-    // My Orders with countdown 
+    //My Orders with countdown 
 
     private void setupOrdersTable() {
         colOTest.setCellValueFactory(c     -> new SimpleStringProperty(c.getValue().getTestTypeName()));
